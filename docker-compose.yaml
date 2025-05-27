@@ -1,0 +1,64 @@
+services:
+  db:
+    build:
+      context: ./
+      dockerfile: ./.docker/db/Dockerfile
+    image: library-db
+    container_name: library-db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - library
+  app:
+    build:
+      context: ./
+      dockerfile: ./.docker/app/app.dockerfile
+    image: library-app
+    container_name: library-app
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    networks:
+      - library
+  vite:
+    build:
+      context: ./
+      dockerfile: ./.docker/app/vite.dockerfile
+    image: library-vite
+    container_name: library-vite
+    volumes:
+      - ./:/var/www
+    ports:
+      - 5173:5173
+    depends_on:
+      - app
+  server:
+    build:
+      context: ./
+      dockerfile: ./.docker/server/Dockerfile
+    image: library-server
+    container_name: library-server
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www
+      - ./.docker/server/config:/etc/nginx/conf.d
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - library
+volumes:
+  db_data:
+
+networks:
+  library:
+    driver: bridge
