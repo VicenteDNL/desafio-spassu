@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('book_subject', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
-            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained();
             $table->timestamps();
             $table->unique(['book_id', 'subject_id']);
         });
