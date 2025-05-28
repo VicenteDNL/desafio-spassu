@@ -5,7 +5,7 @@
         'actions' => ['create' => route('authors.create')],
     ])
     @include('layout.components.table', [
-        'caption' => 'Lista de Autores',
+        'caption' => 'Lista de autores',
         'header' => ['#', 'Nome', 'Alteração'],
         'pagination' => \Closure::fromCallable([$authors, 'links']),
         'body' => array_map(function ($c) {

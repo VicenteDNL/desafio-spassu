@@ -1,4 +1,5 @@
-<div class="card shadow-sm my-5 pt-3">
+<h5 class="mt-5">{{ $caption ?? null }}</h5>
+<div class="card shadow-sm mb-5 mb-2 pt-3">
     <div class="card-body px-0 pt-0">
 
         @if ((is_a($body, Illuminate\Support\Collection::class) && $body->isEmpty()) || empty($body))
@@ -46,6 +47,14 @@
                                                         <small><i class="fa-solid fa-trash me-2"></i>Excluir</small>
                                                     </button>
                                                 @endisset
+                                                @isset($item['remove'])
+                                                    <button type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#{{ $idModal }}"
+                                                        class="list-group-item list-group-item-action p-1 text-light-emphasis">
+                                                        <small><i class="fa-solid fa-xmark me-2"></i>Remover</small>
+                                                    </button>
+                                                @endisset
+
                                             </div>
                                         </div>
                                         @isset($item['delete'])
@@ -53,6 +62,13 @@
                                                 'caption' => 'Realmente deseja excluir?',
                                                 'id' => $idModal,
                                                 'route' => $item['delete'],
+                                            ])
+                                        @endisset
+                                        @isset($item['remove'])
+                                            @include('layout.components.modal_confirm_delete', [
+                                                'caption' => 'Realmente deseja remover?',
+                                                'id' => $idModal,
+                                                'route' => $item['remove'],
                                             ])
                                         @endisset
                                     </td>

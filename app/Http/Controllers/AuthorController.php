@@ -38,7 +38,9 @@ class AuthorController extends Controller
 
     public function update(AuthPostRequest $request, Author $author)
     {
-        return redirect()->route('authors.index');
+        $validated = $request->validated();
+        $author->update($validated);
+        return redirect()->route('authors.show', $author);
     }
 
     public function destroy(Author $author)

@@ -1,5 +1,5 @@
 @section('form')
-    <form id="formSection" method="POST" action="{{ route('authors.store') }}">
+    <form id="formAuthor" method="POST" action="{{ route('authors.store') }}">
         @csrf
         @include('pages.author.form')
         <button type="submit" class="btn btn-primary">Salvar</button>
@@ -11,5 +11,5 @@
         'title' => 'Autores',
         'actions' => ['list' => route('authors.index')],
     ])
-    @include('layout.components.form_frame')
+    @include('layout.components.form_frame', ['caption' => 'Criar autor'])
 @endsection

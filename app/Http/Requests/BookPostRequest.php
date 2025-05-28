@@ -21,6 +21,7 @@ class BookPostRequest extends FormRequest
             'publisher' => 'required|string|max:40',
             'edition' => 'required|integer',
             'year_publication' => 'required|integer|max_digits:4',
+            'amount' => 'required|regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/',
             'authors'          => 'nullable|array',
             'authors.*'        => 'integer',
             'subjects'    => 'nullable|array',
@@ -36,6 +37,7 @@ class BookPostRequest extends FormRequest
             'publisher' => 'Editora',
             'edition' => 'Edição',
             'year_publication' => 'Ano publicação',
+            'amount' => 'Preço',
             'authors'       => 'Autores',
             'subjects' => 'Assuntos',
 
@@ -47,6 +49,7 @@ class BookPostRequest extends FormRequest
         $data = parent::validated($key, $default);
         $data['authors'] = $this->input('authors', []);
         $data['subjects'] = $this->input('subjects', []);
+        $data['amount'] = str_replace(',', '.', str_replace('.', '', $data['amount']));
         return $data;
     }
 }

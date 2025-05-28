@@ -10,5 +10,7 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::resource('books', BookController::class);
+Route::delete('books/{book}/authors/{author}', [BookController::class, 'destroyAuthor'])->name('books.authors.destroy');
+Route::delete('books/{book}/subjects/{subject}', [BookController::class, 'destroySubject'])->name('books.subjects.destroy');
 Route::resource('authors', AuthorController::class);
 Route::resource('subjects', SubjectController::class);

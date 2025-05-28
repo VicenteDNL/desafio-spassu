@@ -1,5 +1,5 @@
 @section('form')
-    <form id="formSection" method="POST" action="{{ route('subjects.store') }}">
+    <form id="formSubject" method="POST" action="{{ route('subjects.store') }}">
         @csrf
         @include('pages.subject.form')
         <button type="submit" class="btn btn-primary">Salvar</button>
@@ -11,5 +11,5 @@
         'title' => 'Assuntos',
         'actions' => ['list' => route('subjects.index')],
     ])
-    @include('layout.components.form_frame')
+    @include('layout.components.form_frame', ['caption' => 'Criar assunto'])
 @endsection

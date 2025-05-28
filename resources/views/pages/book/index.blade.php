@@ -5,8 +5,8 @@
         'actions' => ['create' => route('books.create')],
     ])
     @include('layout.components.table', [
-        'caption' => 'Lista de Autores',
-        'header' => ['#', 'Título', 'Editora', 'Edição', 'Ano publicação'],
+        'caption' => 'Lista de livros',
+        'header' => ['#', 'Título', 'Editora', 'Edição', 'Ano publicação', 'Alteração'],
         'pagination' => \Closure::fromCallable([$books, 'links']),
         'body' => array_map(function ($c) {
             return [

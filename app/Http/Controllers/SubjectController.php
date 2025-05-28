@@ -38,7 +38,9 @@ class SubjectController extends Controller
 
     public function update(SubjectPostRequest $request, Subject $subject)
     {
-        return redirect()->route('subjects.index');
+        $validated = $request->validated();
+        $subject->update($validated);
+        return redirect()->route('subjects.show', $subject);
     }
 
     public function destroy(Subject $subject)

@@ -55,16 +55,48 @@ class BookController extends Controller
 
     public function edit(Book $book)
     {
-        return view('pages.book.edit', compact('book'));
+        $authors = Author::whereDoesntHave('books', function ($query) use ($book) {
+            $query->where('book_id', $book->id);
+        })->get();
+
+        $subjects = Subject::whereDoesntHave('books', function ($query) use ($book) {
+            $query->where('book_id', $book->id);
+        })->get();;
+
+        return view('pages.book.edit', compact('book', 'authors', 'subjects'));
     }
 
     public function update(BookPostRequest $request, Book $book)
     {
-        return redirect()->route('books.index');
+        $validated = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            $book->update($validated);
+            $book->authors()->sync($validated['authors']);
+            $book->subjects()->sync($validated['subjects']);
+            DB::commit();
+        } catch (Throwable $e) {
+            DB::rollBack();
+            throw $e;
+        }
+        return redirect()->route('books.show', $book);
     }
 
     public function destroy(Book $book)
     {
         return redirect()->route('books.index');
+    }
+
+    public function destroyAuthor(Book $book, Author $author)
+    {
+        $book->authors()->detach($author->id);
+        return redirect()->back();
+    }
+
+    public function destroySubject(Book $book, Subject $subject)
+    {
+        $book->subjects()->detach($subject->id);
+        return redirect()->back();
     }
 }

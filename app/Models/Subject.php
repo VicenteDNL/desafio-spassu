@@ -10,4 +10,9 @@ class Subject extends Model
     protected $fillable = [
         'description',
     ];
+
+    public function books()
+    {
+        return $this->belongsToMany(Book::class)->using(BookSubject::class);
+    }
 }

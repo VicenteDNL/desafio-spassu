@@ -19,9 +19,9 @@
 
         <div class="d-flex justify-content-between w-100">
             <h5>{{ $title }}</h5>
-            <div>
+            <div class="d-flex">
                 @foreach ($actions as $key => $action)
-                    <a class="btn btn-success shadow-sm d-flex align-items-center" href="{{ $action }}">
+                    <a class="btn btn-success shadow-sm d-flex align-items-center ms-2" href="{{ $action }}">
                         <i class="{{ $icons[$key] ?? '' }} me-1"></i> {{ $titleAction[$key] ?? '' }}
                     </a>
                 @endforeach

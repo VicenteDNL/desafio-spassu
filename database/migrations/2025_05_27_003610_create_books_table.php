@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('publisher', 40);
             $table->integer('edition');
             $table->string('year_publication', 4);
+            $table->decimal('amount', 15, 2);
             $table->timestamps();
         });
     }

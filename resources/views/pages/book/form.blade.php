@@ -25,6 +25,12 @@
         required min="1000" max="{{ date('Y') }}" step="1">
     <div id="bookYearPublicationHelp" class="form-text">Formato de ano válido (YYYY)</div>
 </div>
+<div class="mb-3">
+    <label for="inputBookAmount" class="form-label">Preço</label>
+    <input type="text" name="amount" class="form-control" id="inputBookAmount"
+        value="{{ old('amount', $book->amount ?? '') }}" aria-describedby="bookAmountHelp" required maxlength="40">
+    <div id="bookAmountHelp" class="form-text">Valor em reais (máximo 15 digitos)</div>
+</div>
 <div class="row mb-3">
     <div class="col-5">
         <label for="selectAllAuthor" class="form-label">Autores</label>
@@ -104,7 +110,7 @@
             toSelect.appendChild(option);
         });
     }
-    document.getElementById("formAuthor").addEventListener("submit", function() {
+    document.getElementById("formBook").addEventListener("submit", function() {
         let selectAuthors = document.getElementById("selectAllAuthorSelected");
         let selectSubject = document.getElementById("selectAllSubjectSelected");
         for (let option of selectAuthors.options) {
@@ -127,5 +133,23 @@
     const inputBookEdition = document.getElementById('inputBookEdition');
     inputBookEdition.addEventListener('input', () => {
         inputBookEdition.value = inputBookEdition.value.replace(/\D/g, '');
+    });
+
+    const inputAmount = document.getElementById('inputBookAmount');
+
+    inputAmount.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        value = value.substring(0, 15);
+        value = (parseInt(value, 10) / 100).toFixed(2);
+        this.value = value
+            .toString()
+            .replace('.', ',')
+            .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (inputAmount.value) {
+            inputAmount.dispatchEvent(new Event('input'));
+        }
     });
 </script>

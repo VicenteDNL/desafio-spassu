@@ -5,7 +5,7 @@
         'actions' => ['create' => route('subjects.create')],
     ])
     @include('layout.components.table', [
-        'caption' => 'Lista de Autores',
+        'caption' => 'Lista de assuntos',
         'header' => ['#', 'Descrição', 'Alteração'],
         'pagination' => \Closure::fromCallable([$subjects, 'links']),
         'body' => array_map(function ($c) {
