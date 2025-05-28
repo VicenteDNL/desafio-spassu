@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SubjectPostRequest;
 use App\Models\Subject;
-use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
@@ -23,7 +22,9 @@ class SubjectController extends Controller
         $validated = $request->validated();
         $subject = new Subject($validated);
         $subject->save();
-        return  redirect()->route('subjects.show', ['subject' => $subject]);
+        return  redirect()
+            ->route('subjects.show', ['subject' => $subject])
+            ->with('success', 'Assunto criado com sucesso');
     }
 
     public function show(Subject $subject)
@@ -40,11 +41,21 @@ class SubjectController extends Controller
     {
         $validated = $request->validated();
         $subject->update($validated);
-        return redirect()->route('subjects.show', $subject);
+        return redirect()
+            ->route('subjects.show', $subject)
+            ->with('success', 'Assunto alterado com sucesso');
     }
 
     public function destroy(Subject $subject)
     {
-        return redirect()->route('subjects.index');
+        if (count($subject->books) > 0) {
+            return redirect()
+                ->back()
+                ->with('error', 'Não é possível deletar um assunto vinculado a um livro');
+        }
+        $subject->delete();
+        return redirect()
+            ->route('subjects.index')
+            ->with('success', 'Assunto deletado com sucesso');
     }
 }
