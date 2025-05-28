@@ -16,6 +16,15 @@ services:
       - db_data:/var/lib/postgresql/data
     networks:
       - library
+  redis:
+    build:
+      context: ./
+      dockerfile: ./.docker/redis/Dockerfile
+    image: library-redis
+    container_name: library-redis
+    command: "--requirepass librarypwd"
+    networks:
+      - library
   app:
     build:
       context: ./
@@ -26,6 +35,7 @@ services:
       - ./:/var/www
     depends_on:
       - db
+      - redis
     networks:
       - library
   vite:
