@@ -12,7 +12,8 @@
     @include('layout.components.list_actions', [
         'title' => 'Assuntos',
         'actions' => [
-            'create' => route('subjects.create'),
+            'view' => route('subjects.show', $subject->id),
+            'delete' => route('subjects.destroy', $subject->id),
             'list' => route('subjects.index'),
         ],
     ])

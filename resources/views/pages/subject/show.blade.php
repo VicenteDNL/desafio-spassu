@@ -4,6 +4,7 @@
         'title' => 'Assuntos',
         'actions' => [
             'edit' => route('subjects.edit', $subject->id),
+            'delete' => route('subjects.destroy', $subject->id),
             'list' => route('subjects.index'),
         ],
     ])
