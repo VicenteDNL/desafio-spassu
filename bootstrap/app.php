@@ -18,8 +18,15 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (Throwable $e, Request $request) {
-            return redirect()
-                ->back()
-                ->with('error', 'Ocorreu um erro inesperado, mas fique tranquilo que o problema já foi reportado a nossa equipe.');
+            $isRedirect = $request->session()->get('handling-exception', false);
+            if ($isRedirect) {
+                $request->session()->forget('handling-exception');
+                return;
+            } else {
+                $request->session()->put('handling-exception', true);
+                return redirect()
+                    ->back()
+                    ->with('error', 'Ocorreu um erro inesperado, mas fique tranquilo que o problema já foi reportado a nossa equipe.');
+            }
         });
     })->create();
