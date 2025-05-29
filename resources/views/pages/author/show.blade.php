@@ -4,6 +4,7 @@
         'title' => 'Autores',
         'actions' => [
             'edit' => route('authors.edit', $author->id),
+            'delete' => route('authors.destroy', $author->id),
             'list' => route('authors.index'),
         ],
     ])
