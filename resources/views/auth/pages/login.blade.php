@@ -23,7 +23,7 @@
         </div>
         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
             <a class="small" href="{{ route('password.request') }}">Esqueceu a senha?</a>
-            <button type="submit" class="btn btn-primary ">Entrar</a>
+            <button type="submit" class="btn btn-primary text-light">Entrar</a>
         </div>
     </form>
 @endsection

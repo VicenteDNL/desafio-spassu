@@ -210,7 +210,7 @@ Acessar o diretório
   cd desafio-spassu
 ```
 
-Fazer uma copía do .env.example. Para facilitar a inicialização do projeto todas as variavés necessárias já estão contidas no .env.example
+Fazer uma copía do .env.example. Para facilitar a inicialização do projeto, todos os valores das variaveis necessárias já estão contidas no `.env.example`, com exceção das variaveis de configuração do serviço de email SMTP.(necessário para redefinição da senha)
 
 ```
   cp .env.example .env

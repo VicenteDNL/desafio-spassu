@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AuthenticateMiddleware;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,13 +16,16 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'customAuth' => AuthenticateMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (Throwable $e, Request $request) {
 
             $ignore = [
                 ValidationException::class,
+                AuthenticationException::class,
             ];
 
             if (in_array(get_class($e), $ignore)) {

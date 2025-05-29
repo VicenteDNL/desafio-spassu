@@ -32,7 +32,7 @@ Route::get('/', function () {
     return view('pages.dashboard.index');
 })->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('customAuth')->group(function () {
     Route::resource('books', BookController::class);
     Route::delete('books/{book}/authors/{author}', [BookController::class, 'destroyAuthor'])->name('books.authors.destroy');
     Route::delete('books/{book}/subjects/{subject}', [BookController::class, 'destroySubject'])->name('books.subjects.destroy');

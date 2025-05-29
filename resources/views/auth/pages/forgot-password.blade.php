@@ -15,7 +15,7 @@
             {{ session('message') }}
         </div>
         <div class="d-flex justify-content-end mt-4 mb-0">
-            <a href="{{ route('login') }}" class="btn btn-primary">Voltar a pagina de login</a>
+            <a href="{{ route('login') }}" class="btn btn-primary text-light">Voltar a pagina de login</a>
         </div>
     @else
         <form method="POST" action="{{ route('password.email') }}">
