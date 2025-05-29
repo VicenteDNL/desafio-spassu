@@ -2,13 +2,77 @@
 @import "../bootstrap_functions.scss";
 
 //colors
-$primary: #432472;
-$secondary: #fbb1d4;
-
+$primary: #f94615;
+$secondary: #201547;
+$success: #dbe442;
+$light: rgb(255, 255, 255);
+$info: #37dbc1;
+$warning: #dbce37;
 @import "../bootstrap_variable.scss";
 
 //Body
 $body-color: #6d6765;
+$body-bg: #f8f7f4;
+$body-emphasis-color: #6d6765;
+
+//card
+// $card-bg: white;
+$card-bg: var(--my-card-bg);
+// $card-bg: var(--#{$prefix}body-bg);
+
+$card-border-radius: 1rem;
+$card-border-width: 0;
+
+//Table
+$table-th-font-weight: 800;
+$table-bg: var(--my-card-bg);
+$table-color: $body-color;
+
+//Pagination
+$pagination-border-width: 0px;
+$pagination-active-bg: $primary;
+$pagination-bg: transparent;
+$pagination-disabled-color: tint-color($body-color, 80%);
+$pagination-disabled-bg: transparent;
+$pagination-color: $body-color;
+$pagination-hover-bg: tint-color($primary, 80%);
+$pagination-hover-color: $body-color;
+$pagination-border-radius: 100%;
+$pagination-margin-start: 4px;
+
+//Input
+$input-bg: var(--my-card-bg);
+$input-focus-bg: var(--my-card-bg);
+$input-border-width: 3px;
+$input-focus-box-shadow: 0;
+$input-focus-border-color: tint-color($component-active-bg, 40%);
+
+//Form
+$form-label-font-weight: bold;
+$form-label-margin-bottom: 0.1rem;
+$form-text-color: $gray-500;
+$form-check-input-focus-box-shadow: 0;
+
+//Select
+$form-select-focus-box-shadow: 0;
+$form-select-border-width: 3px;
+$form-select-bg: var(--#{$prefix}body-bg);
+
+//Buttons
+$btn-border-radius: 0.675rem;
+$btn-font-weight: bold;
+
+//Dark
+$body-color-dark: #949393;
+$body-bg-dark: #151026;
 
 @import "../bootstrap_components.scss";
 @import "../fontawesome.scss";
+
+:root {
+    --my-card-bg: #ffffff;
+}
+
+[data-bs-theme="dark"] {
+    --my-card-bg: #0a0713;
+}

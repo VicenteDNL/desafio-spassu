@@ -23,7 +23,7 @@
                                 @endphp
                                 @if ($key == 'actions')
                                     <td>
-                                        <a class="btn btn-sm btn-light" data-bs-toggle="dropdown">
+                                        <a class="btn btn-sm btn-outline-primary" data-bs-toggle="dropdown">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end p-3 mx-3">

@@ -4,7 +4,8 @@ const iconDark = document.getElementById('icon-dark');
 const body = document.body;
 
 function updateIcons() {
-    const theme = body.getAttribute('data-bs-theme');
+    const theme = localStorage.getItem('theme')
+    body.setAttribute('data-bs-theme', theme);
     if (theme === 'light') {
         iconLight.classList.remove('d-none');
         iconDark.classList.add('d-none');
@@ -17,7 +18,7 @@ function updateIcons() {
 button.addEventListener('click', () => {
     const currentTheme = body.getAttribute('data-bs-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    body.setAttribute('data-bs-theme', newTheme);
+    localStorage.setItem('theme', newTheme)
     updateIcons();
 });
 updateIcons();

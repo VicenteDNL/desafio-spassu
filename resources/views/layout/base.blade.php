@@ -11,18 +11,22 @@
 
 <body data-bs-theme="dark">
     <div class="container pt-2">
-        <ul class="nav justify-content-end">
+        <ul class="nav nav-underline justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">Dasboard</a>
+                <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" aria-current="page"
+                    href="{{ route('dashboard') }}">Dasboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('books.index') }}">Livros</a>
+                <a class="nav-link {{ Route::is('books.*') ? 'active' : '' }}"
+                    href="{{ route('books.index') }}">Livros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('authors.index') }}">Autores</a>
+                <a class="nav-link {{ Route::is('authors.*') ? 'active' : '' }}"
+                    href="{{ route('authors.index') }}">Autores</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('subjects.index') }}">Assuntos</a>
+                <a class="nav-link {{ Route::is('subjects.*') ? 'active' : '' }}"
+                    href="{{ route('subjects.index') }}">Assuntos</a>
             </li>
             <li class="nav-item">
                 <button id="toggle-theme" class="btn btn-primary">
