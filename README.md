@@ -53,6 +53,8 @@ A tecnologia a ser utilizada deve ser voltada para aplicações Web e estar alin
 - **Containerização (opcional)**: Docker + Docker Compose
 - **Redis**: Armazenamento das sessões e cache
 - **Logs**: LogViewer para visualização dos logs
+- **Server**: Ngnix com proxy reverso
+- **Vite**: para lidar com arquivos front-end em desenvolvimento
 
 ## 🧱 Modelo de Dados
 
