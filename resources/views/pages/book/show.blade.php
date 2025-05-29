@@ -1,4 +1,4 @@
-@extends('layout.base')
+@extends('layout.base', ['title' => 'Livro - criar'])
 @section('layout')
     @include('layout.components.list_actions', [
         'title' => 'Livros',

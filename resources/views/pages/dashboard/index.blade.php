@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-@extends('layout.base')
+@extends('layout.base', ['title' => 'Dashboard'])
 @section('layout')
     @include('layout.components.list_actions', [
         'title' => 'Dashboard',

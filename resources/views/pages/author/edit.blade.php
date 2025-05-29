@@ -7,7 +7,7 @@
     </form>
 @endsection
 
-@extends('layout.base')
+@extends('layout.base', ['title' => 'Autor - editar'])
 @section('layout')
     @include('layout.components.list_actions', [
         'title' => 'Autores',

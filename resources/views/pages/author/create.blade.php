@@ -5,7 +5,7 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 @endsection
-@extends('layout.base')
+@extends('layout.base', ['title' => 'Autor - criar'])
 @section('layout')
     @include('layout.components.list_actions', [
         'title' => 'Autores',

@@ -227,3 +227,5 @@ Criar dados ficticios (opcional)
 ```
    docker exec -it library-app php artisan db:seed
 ```
+
+Apos finalizado a aplicação estará disponivel em: [localhost:8080](http://localhost:8080)
