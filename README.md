@@ -199,7 +199,7 @@ As **views** a seguir foram criadas para auxiliar na geração de relatórios e 
 Clone o projeto
 
 ```
- git clone https://github.com/essenciadev-org/essencia-docker.git
+ git clone https://github.com/VicenteDNL/desafio-spassu.git
 ```
 
 Acessar o diretório
@@ -223,5 +223,5 @@ Iniciar os container docker
 Criar dados ficticios (opcional)
 
 ```
-   docker exec -it app php artisa db:seed
+   docker exec -it library-app php artisan db:seed
 ```
