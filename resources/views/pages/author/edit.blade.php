@@ -12,7 +12,8 @@
     @include('layout.components.list_actions', [
         'title' => 'Autores',
         'actions' => [
-            'create' => route('authors.create'),
+            'view' => route('authors.show', $author->id),
+            'delete' => route('authors.destroy', $author->id),
             'list' => route('authors.index'),
         ],
     ])

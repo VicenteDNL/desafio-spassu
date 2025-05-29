@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthPostRequest;
 use App\Models\Author;
-use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
@@ -23,7 +22,9 @@ class AuthorController extends Controller
         $validated = $request->validated();
         $author = new Author($validated);
         $author->save();
-        return  redirect()->route('authors.show', ['author' => $author]);
+        return  redirect()
+            ->route('authors.show', ['author' => $author])
+            ->with('success', 'Autor criado com sucesso');;
     }
 
     public function show(Author $author)
@@ -40,11 +41,21 @@ class AuthorController extends Controller
     {
         $validated = $request->validated();
         $author->update($validated);
-        return redirect()->route('authors.show', $author);
+        return redirect()
+            ->route('authors.show', $author)
+            ->with('success', 'Autor alterado com sucesso');;
     }
 
     public function destroy(Author $author)
     {
-        return redirect()->route('authors.index');
+        if (count($author->books) > 0) {
+            return redirect()
+                ->back()
+                ->with('error', 'Não é possível deletar um autor vinculado a um livro');
+        }
+        $author->delete();
+        return redirect()
+            ->route('authors.index')
+            ->with('success', 'Autor deletado com sucesso');;
     }
 }
