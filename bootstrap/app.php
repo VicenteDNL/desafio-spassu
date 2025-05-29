@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,6 +18,15 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (Throwable $e, Request $request) {
+
+            $ignore = [
+                ValidationException::class
+            ];
+
+            if (in_array(get_class($e), $ignore)) {
+                return;
+            }
+
             $isRedirect = $request->session()->get('handling-exception', false);
             if ($isRedirect) {
                 $request->session()->forget('handling-exception');

@@ -6,8 +6,6 @@ use App\Http\Requests\BookPostRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Subject;
-use Illuminate\Container\Attributes\Auth;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -15,7 +13,10 @@ class BookController extends Controller
 {
     public function index()
     {
-        return view('pages.book.index', ['books' => Book::orderBy('updated_at')->paginate(10)]);
+        return view(
+            'pages.book.index',
+            ['books' => Book::orderBy('updated_at')->paginate(10)]
+        );
     }
 
     public function create()
@@ -45,7 +46,9 @@ class BookController extends Controller
             DB::rollBack();
             throw $e;
         }
-        return redirect()->route('books.show', ['book' => $book]);
+        return redirect()
+            ->route('books.show', ['book' => $book])
+            ->with('success', 'Livro criado com sucesso');;
     }
 
     public function show(Book $book)
@@ -80,23 +83,31 @@ class BookController extends Controller
             DB::rollBack();
             throw $e;
         }
-        return redirect()->route('books.show', $book);
+        return redirect()
+            ->route('books.show', $book)
+            ->with('success', 'Livro alterado com sucesso');
     }
 
     public function destroy(Book $book)
     {
-        return redirect()->route('books.index');
+        $book->delete();
+        return redirect()->route('books.index')
+            ->with('success', 'Livro deletado com sucesso');;
     }
 
     public function destroyAuthor(Book $book, Author $author)
     {
         $book->authors()->detach($author->id);
-        return redirect()->back();
+        return redirect()
+            ->back()
+            ->with('success', 'Autor removido deste livro');
     }
 
     public function destroySubject(Book $book, Subject $subject)
     {
         $book->subjects()->detach($subject->id);
-        return redirect()->back();
+        return redirect()
+            ->back()
+            ->with('success', 'Assunto removido deste livro');;
     }
 }

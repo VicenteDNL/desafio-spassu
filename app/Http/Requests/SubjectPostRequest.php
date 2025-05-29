@@ -18,7 +18,6 @@ class SubjectPostRequest extends FormRequest
     {
         return [
             'description' => 'required|string|max:20',
-
         ];
     }
 

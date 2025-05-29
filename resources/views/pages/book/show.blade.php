@@ -15,6 +15,9 @@
             'Título' => $book->title,
             'Editora' => $book->publisher,
             'Edição' => $book->edition,
+            'Preço' => (new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY))->formatCurrency(
+                $book->amount,
+                'BRL'),
             'Ano publicação' => $book->year_publication,
             'Data criação' => (new DateTime($book->created_at))->format('d/m/Y H:i'),
             'Data edição' => (new DateTime($book->updated_at))->format('d/m/Y H:i'),

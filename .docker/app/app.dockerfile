@@ -7,10 +7,11 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libsodium-dev \
-    libpq-dev
+    libpq-dev \
+    libicu-dev
 
 RUN pecl install xdebug-3.3.1 
-RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-install pdo_pgsql intl
 ADD ./.docker/app/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 RUN pecl install redis-6.1.0 && docker-php-ext-enable redis
 

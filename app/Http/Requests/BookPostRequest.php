@@ -19,9 +19,9 @@ class BookPostRequest extends FormRequest
         return [
             'title' => 'required|string|max:40',
             'publisher' => 'required|string|max:40',
-            'edition' => 'required|integer',
-            'year_publication' => 'required|integer|max_digits:4',
-            'amount' => 'required|regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/',
+            'edition' => 'required|integer|min:1',
+            'year_publication' => 'required|integer|digits:4|max:' . date('Y'),
+            'amount' => ['required', 'regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
             'authors'          => 'nullable|array',
             'authors.*'        => 'integer',
             'subjects'    => 'nullable|array',
