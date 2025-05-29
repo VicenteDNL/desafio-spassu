@@ -12,7 +12,8 @@
     @include('layout.components.list_actions', [
         'title' => 'Livros',
         'actions' => [
-            'create' => route('books.create'),
+            'view' => route('books.show', $book->id),
+            'delete' => route('books.destroy', $book->id),
             'list' => route('books.index'),
         ],
     ])

@@ -4,6 +4,7 @@
         'title' => 'Livros',
         'actions' => [
             'edit' => route('books.edit', $book->id),
+            'delete' => route('books.destroy', $book->id),
             'list' => route('books.index'),
         ],
     ])
