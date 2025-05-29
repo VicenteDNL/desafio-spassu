@@ -1,10 +1,10 @@
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 @extends('layout.base', ['title' => 'Dashboard'])
 @section('layout')
     @include('layout.components.list_actions', [
         'title' => 'Dashboard',
         'actions' => [],
     ])
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <div class="row">
         <div class="col-6">
             <div class="card shadow-sm ">
