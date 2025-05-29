@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\ReportController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::prefix('report')->group(function () {
     Route::get('book-summary', [ReportController::class, 'bookSummary'])->name('book-summary');
     Route::get('author-book-count', [ReportController::class, 'authorBookCount'])->name('author-book-count');

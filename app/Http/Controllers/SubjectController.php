@@ -9,7 +9,10 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        return view('pages.subject.index', ['subjects' => Subject::orderBy('updated_at')->paginate(10)]);
+        return view(
+            'pages.subject.index',
+            ['subjects' => Subject::orderBy('updated_at')->paginate(10)]
+        );
     }
 
     public function create()

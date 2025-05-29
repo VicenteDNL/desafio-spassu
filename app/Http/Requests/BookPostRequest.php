@@ -17,29 +17,29 @@ class BookPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:40',
-            'publisher' => 'required|string|max:40',
-            'edition' => 'required|integer|min:1',
+            'title'            => 'required|string|max:40',
+            'publisher'        => 'required|string|max:40',
+            'edition'          => 'required|integer|min:1',
             'year_publication' => 'required|integer|digits:4|max:' . date('Y'),
-            'amount' => ['required', 'regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
+            'amount'           => ['required', 'regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
             'authors'          => 'nullable|array',
             'authors.*'        => 'integer',
-            'subjects'    => 'nullable|array',
-            'subjects.*'  => 'integer',
-
+            'subjects'         => 'nullable|array',
+            'subjects.*'       => 'integer',
 
         ];
     }
+
     public function attributes(): array
     {
         return [
-            'title' => 'Título',
-            'publisher' => 'Editora',
-            'edition' => 'Edição',
+            'title'            => 'Título',
+            'publisher'        => 'Editora',
+            'edition'          => 'Edição',
             'year_publication' => 'Ano publicação',
-            'amount' => 'Preço',
-            'authors'       => 'Autores',
-            'subjects' => 'Assuntos',
+            'amount'           => 'Preço',
+            'authors'          => 'Autores',
+            'subjects'         => 'Assuntos',
 
         ];
     }

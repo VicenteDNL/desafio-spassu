@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReportSubjectBookCount extends Model
 {
-    protected $table = 'report_subject_book_count';
     public $timestamps = false;
+    protected $table = 'report_subject_book_count';
 }

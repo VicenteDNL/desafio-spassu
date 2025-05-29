@@ -24,7 +24,7 @@ class BookController extends Controller
         return view(
             'pages.book.create',
             [
-                'authors' => Author::all(),
+                'authors'  => Author::all(),
                 'subjects' => Subject::all(),
             ]
         );
@@ -48,7 +48,7 @@ class BookController extends Controller
         }
         return redirect()
             ->route('books.show', ['book' => $book])
-            ->with('success', 'Livro criado com sucesso');;
+            ->with('success', 'Livro criado com sucesso');
     }
 
     public function show(Book $book)
@@ -64,7 +64,7 @@ class BookController extends Controller
 
         $subjects = Subject::whereDoesntHave('books', function ($query) use ($book) {
             $query->where('book_id', $book->id);
-        })->get();;
+        })->get();
 
         return view('pages.book.edit', compact('book', 'authors', 'subjects'));
     }
@@ -92,7 +92,7 @@ class BookController extends Controller
     {
         $book->delete();
         return redirect()->route('books.index')
-            ->with('success', 'Livro deletado com sucesso');;
+            ->with('success', 'Livro deletado com sucesso');
     }
 
     public function destroyAuthor(Book $book, Author $author)
@@ -108,6 +108,6 @@ class BookController extends Controller
         $book->subjects()->detach($subject->id);
         return redirect()
             ->back()
-            ->with('success', 'Assunto removido deste livro');;
+            ->with('success', 'Assunto removido deste livro');
     }
 }

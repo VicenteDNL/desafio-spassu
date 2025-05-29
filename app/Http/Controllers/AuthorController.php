@@ -24,7 +24,7 @@ class AuthorController extends Controller
         $author->save();
         return  redirect()
             ->route('authors.show', ['author' => $author])
-            ->with('success', 'Autor criado com sucesso');;
+            ->with('success', 'Autor criado com sucesso');
     }
 
     public function show(Author $author)
@@ -43,7 +43,7 @@ class AuthorController extends Controller
         $author->update($validated);
         return redirect()
             ->route('authors.show', $author)
-            ->with('success', 'Autor alterado com sucesso');;
+            ->with('success', 'Autor alterado com sucesso');
     }
 
     public function destroy(Author $author)
@@ -56,6 +56,6 @@ class AuthorController extends Controller
         $author->delete();
         return redirect()
             ->route('authors.index')
-            ->with('success', 'Autor deletado com sucesso');;
+            ->with('success', 'Autor deletado com sucesso');
     }
 }

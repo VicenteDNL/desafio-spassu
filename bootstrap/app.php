@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (Throwable $e, Request $request) {
 
             $ignore = [
-                ValidationException::class
+                ValidationException::class,
             ];
 
             if (in_array(get_class($e), $ignore)) {
@@ -28,6 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             $isRedirect = $request->session()->get('handling-exception', false);
+
             if ($isRedirect) {
                 $request->session()->forget('handling-exception');
                 return;

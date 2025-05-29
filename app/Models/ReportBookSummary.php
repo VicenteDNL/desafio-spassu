@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReportBookSummary extends Model
 {
-    protected $table = 'report_books_summary';
     public $timestamps = false;
+    protected $table = 'report_books_summary';
 }

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReportSubjectByYear extends Model
 {
-    protected $table = 'report_subject_by_year';
     public $timestamps = false;
+    protected $table = 'report_subject_by_year';
 }

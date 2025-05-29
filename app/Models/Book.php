@@ -11,13 +11,14 @@ class Book extends Model
         'publisher',
         'edition',
         'year_publication',
-        'amount'
+        'amount',
     ];
 
     public function authors()
     {
         return $this->belongsToMany(Author::class, 'book_author')->using(BookAuthor::class);
     }
+
     public function subjects()
     {
         return $this->belongsToMany(Subject::class)->using(BookSubject::class);
