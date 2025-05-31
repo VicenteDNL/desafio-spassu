@@ -58,8 +58,30 @@
                         }
                     }
                 },
-
-
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        chart: {
+                            height: 500
+                        },
+                        yaxis: {
+                            labels: {
+                                formatter: function(val) {
+                                    if (Number.isInteger(val)) return val;
+                                    ''
+                                    const parts = val.split(' ');
+                                    if (parts.length === 1) return parts[0];
+                                    const last = parts[parts.length - 1];
+                                    const firstInitial = parts[0].charAt(0).toUpperCase();
+                                    return `${firstInitial}. ${last}`;
+                                },
+                                style: {
+                                    fontSize: '10px'
+                                }
+                            }
+                        },
+                    }
+                }, ]
             };
 
             var chart = new ApexCharts(document.querySelector("#chart-author-count-subject"), options);
@@ -69,6 +91,5 @@
             console.error("Erro ao carregar dados do gráfico:", error);
         }
     }
-
     loadChartData();
 </script>

@@ -20,7 +20,25 @@
                 },
                 title: {
                     text: 'Livros Publicados por Ano'
-                }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false
+                    }
+                },
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        plotOptions: {
+                            bar: {
+                                horizontal: true
+                            }
+                        },
+                        chart: {
+                            height: 400
+                        }
+                    }
+                }]
             };
 
             const chart = new ApexCharts(document.querySelector("#chart-book-summary"), options);

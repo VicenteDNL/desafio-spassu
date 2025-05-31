@@ -1,4 +1,4 @@
-const button = document.getElementById('toggle-theme');
+const button = document.querySelectorAll('[data-toggle-theme]');
 const iconLight = document.getElementById('icon-light');
 const iconDark = document.getElementById('icon-dark');
 const body = document.body;
@@ -15,10 +15,12 @@ function updateIcons() {
     }
 }
 
-button.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-bs-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('theme', newTheme)
-    updateIcons();
-});
+button.forEach((e) => {
+    e.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme)
+        updateIcons();
+    });
+})
 updateIcons();

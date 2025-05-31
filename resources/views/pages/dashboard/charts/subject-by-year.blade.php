@@ -34,8 +34,16 @@
                     }
                 },
                 responsive: [{
-                    breakpoint: 480,
+                    breakpoint: 768,
                     options: {
+                        plotOptions: {
+                            bar: {
+                                horizontal: true
+                            }
+                        },
+                        chart: {
+                            height: 500
+                        },
                         legend: {
                             position: 'bottom',
                             offsetX: -10,
@@ -45,9 +53,10 @@
                 }],
                 plotOptions: {
                     bar: {
+                        horizontal: false,
                         dataLabels: {
                             total: {
-                                enabled: true,
+                                enabled: false,
                             }
                         }
                     },

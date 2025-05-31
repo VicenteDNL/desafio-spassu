@@ -6,15 +6,15 @@
     ])
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card shadow-sm ">
                 <div class="card-body">
                     @include('pages.dashboard.charts.author-count-subject')
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="card shadow-sm ">
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm mt-4 ">
                 <div class="card-body">
                     @include('pages.dashboard.charts.subject-book-percent')
                 </div>

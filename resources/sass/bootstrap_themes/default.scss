@@ -1,6 +1,8 @@
 @import "../fonts_family.scss";
 @import "../bootstrap_functions.scss";
 
+$font-family-base: "Nunito" !default;
+
 //colors
 $primary: #f94615;
 $secondary: #201547;
@@ -8,6 +10,7 @@ $success: #dbe442;
 $light: rgb(255, 255, 255);
 $info: #37dbc1;
 $warning: #dbce37;
+
 @import "../bootstrap_variable.scss";
 
 //Body
@@ -65,6 +68,9 @@ $btn-font-weight: bold;
 //Dark
 $body-color-dark: #949393;
 $body-bg-dark: #151026;
+
+//nav
+$navbar-light-active-color: $primary;
 
 @import "../bootstrap_components.scss";
 @import "../fontawesome.scss";

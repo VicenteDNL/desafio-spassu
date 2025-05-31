@@ -18,7 +18,7 @@
 <div class="card shadow-sm mb-5 mt-2">
     <div class="card-body m-4">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 @foreach ($even as $key => $item)
                     <div class="mt-3">
                         <div><small><strong> {{ $key }}</strong></small> </div>

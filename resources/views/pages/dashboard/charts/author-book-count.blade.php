@@ -20,7 +20,41 @@
                 },
                 title: {
                     text: 'Quantidade de livros por autor'
-                }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false
+                    }
+                },
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        plotOptions: {
+                            bar: {
+                                horizontal: true
+                            }
+                        },
+                        chart: {
+                            height: 400
+                        },
+                        yaxis: {
+                            labels: {
+                                formatter: function(val) {
+                                    if (Number.isInteger(val)) return val;
+                                    ''
+                                    const parts = val.split(' ');
+                                    if (parts.length === 1) return parts[0];
+                                    const last = parts[parts.length - 1];
+                                    const firstInitial = parts[0].charAt(0).toUpperCase();
+                                    return `${firstInitial}. ${last}`;
+                                },
+                                style: {
+                                    fontSize: '10px'
+                                }
+                            }
+                        },
+                    }
+                }]
             };
 
             const chart = new ApexCharts(document.querySelector("#chart-author-book-count"), options);

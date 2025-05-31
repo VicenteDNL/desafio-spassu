@@ -16,7 +16,21 @@
                 labels: data.map((e) => e.description),
                 title: {
                     text: 'Porcentagem de livros por assunto'
-                }
+                },
+                legend: {
+                    position: 'right',
+                },
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        chart: {
+                            width: '100%'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
             };
             const chart = new ApexCharts(document.querySelector("#chart-subject-book-percent"), options);
             chart.render();

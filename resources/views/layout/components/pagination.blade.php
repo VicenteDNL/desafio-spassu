@@ -13,7 +13,7 @@
 @endphp
 @if ($paginator->hasPages())
 
-    <div class="d-flex justify-content-between align-items-center mx-3">
+    <div class="d-flex justify-content-between  flex-md-row flex-column align-items-center mx-3">
         <div>
             Mostrando {{ $paginator->firstItem() }} a {{ $paginator->lastItem() }} de {{ $paginator->total() }}
         </div>

@@ -32,7 +32,7 @@
     <div id="bookAmountHelp" class="form-text">Valor em reais (máximo 15 digitos)</div>
 </div>
 <div class="row mb-3">
-    <div class="col-5">
+    <div class="col-12 col-md-5">
         <label for="selectAllAuthor" class="form-label">Autores</label>
         <select id="selectAllAuthor" class="form-select" multiple aria-label="Multiple select example"
             style="min-height: 150px">
@@ -41,7 +41,7 @@
             @endforeach
         </select>
     </div>
-    <div class="col-2">
+    <div class="col-12 col-md-2">
         <div class="d-flex flex-column mt-4">
             <button type="button" class="btn btn-secondary mb-3 mx-3"
                 onclick="moveOptions('selectAllAuthor', 'selectAllAuthorSelected')">
@@ -53,7 +53,7 @@
             </button>
         </div>
     </div>
-    <div class="col-5">
+    <div class="col-12 col-md-5">
         <label for="selectAllAuthorSelected" class="form-label">Autores selecioandos</label>
         <select id="selectAllAuthorSelected" name="authors[]" class="form-select" multiple
             aria-label="Multiple select example" style="min-height: 150px">
@@ -66,7 +66,7 @@
     </div>
 </div>
 <div class="row mb-3">
-    <div class="col-5">
+    <div class="col-12 col-md-5">
         <label for="selectAllSubject" class="form-label">Assuntos</label>
         <select id="selectAllSubject" class="form-select" multiple aria-label="Multiple select example"
             style="min-height: 150px">
@@ -75,7 +75,7 @@
             @endforeach
         </select>
     </div>
-    <div class="col-2">
+    <div class="col-12 col-md-2">
         <div class="d-flex flex-column mt-4">
             <button type="button" class="btn btn-secondary mb-3 mx-3"
                 onclick="moveOptions('selectAllSubject', 'selectAllSubjectSelected')">
@@ -87,7 +87,7 @@
             </button>
         </div>
     </div>
-    <div class="col-5">
+    <div class="col-12 col-md-5">
         <label for="selectAllSubjectSelected" class="form-label">Assuntos selecioandos</label>
         <select id="selectAllSubjectSelected" name="subjects[]" class="form-select" multiple
             aria-label="Multiple select example" style="min-height: 150px">
