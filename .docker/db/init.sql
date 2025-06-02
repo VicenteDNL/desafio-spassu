@@ -1,0 +1,4 @@
+CREATE DATABASE library_test OWNER library ENCODING 'UTF8';
+GRANT ALL PRIVILEGES ON DATABASE library_test TO library;
+
+GRANT ALL ON ALL TABLES IN SCHEMA public TO library;
