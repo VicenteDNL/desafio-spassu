@@ -56,7 +56,7 @@
     <div class="col-12 col-md-5">
         <label for="selectAllAuthorSelected" class="form-label">Autores selecioandos</label>
         <select id="selectAllAuthorSelected" name="authors[]" class="form-select" multiple
-            aria-label="Multiple select example" style="min-height: 150px">
+            aria-label="Multiple select example" style="min-height: 150px" required>
             @isset($book)
                 @foreach ($book->authors as $author)
                     <option value="{{ $author->id }}">{{ $author->name }} </option>
@@ -90,7 +90,7 @@
     <div class="col-12 col-md-5">
         <label for="selectAllSubjectSelected" class="form-label">Assuntos selecioandos</label>
         <select id="selectAllSubjectSelected" name="subjects[]" class="form-select" multiple
-            aria-label="Multiple select example" style="min-height: 150px">
+            aria-label="Multiple select example" style="min-height: 150px" required>
             @isset($book)
                 @foreach ($book->subjects as $subject)
                     <option value="{{ $subject->id }}">{{ $subject->description }} </option>

@@ -22,9 +22,9 @@ class BookPostRequest extends FormRequest
             'edition'          => 'required|integer|min:1',
             'year_publication' => 'required|integer|digits:4|max:' . date('Y'),
             'amount'           => ['required', 'regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
-            'authors'          => 'nullable|array',
+            'authors'          => 'required|array',
             'authors.*'        => 'integer',
-            'subjects'         => 'nullable|array',
+            'subjects'         => 'required|array',
             'subjects.*'       => 'integer',
 
         ];
