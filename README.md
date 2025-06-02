@@ -50,7 +50,7 @@ A tecnologia a ser utilizada deve ser voltada para aplicações Web e estar alin
 - **Frontend**: Blade + Bootstrap 5.3
 - **Relatórios**: Apexcharts
 - **Testes**: PHPUnit (Não aplicado)
-- **Containerização (opcional)**: Docker + Docker Compose
+- **Containerização**: Docker + Docker Compose
 - **Redis**: Armazenamento das sessões e cache
 - **Logs**: LogViewer para visualização dos logs
 - **Server**: Ngnix com proxy reverso
